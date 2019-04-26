@@ -52,6 +52,9 @@ MinStack.prototype.getMin = function() {
 
 
 let obj = new MinStack();
+var param_3 = obj.top()
+var param_4 = obj.getMin()
+console.log("===", param_4);
 obj.push(10);
 obj.push(20);
 obj.push(30);
@@ -62,9 +65,7 @@ console.log("|---|", obj);
 obj.pop()
 
 console.log("|---|", obj);
-var param_3 = obj.top()
-var param_4 = obj.getMin()
-console.log("===", param_4);
+
 
 
 
