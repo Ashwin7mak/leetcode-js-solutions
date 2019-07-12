@@ -11,7 +11,8 @@
  * @return {TreeNode}
  */
 var mergeTrees = function (t1, t2) {
-
+    if (t1 == null && t2 == null) return null;
+    
     if (t1 == null)
         return t2;
     else if (t2 == null)
