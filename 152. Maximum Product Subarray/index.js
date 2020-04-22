@@ -27,3 +27,28 @@ var maxProduct = function (nums) {
 
     return maxProd;
 };
+
+
+var maxProduct1 = function (nums) {
+
+    if (nums.length == 0 || nums == 0) return 0;
+
+    let currMin = nums[0], currMax = nums[0];
+
+    let maxProd = nums[0];
+
+    for (let i = 1; i < nums.length; i++) {
+
+        currMax = Math.max(nums[i], nums[i] * currMax, nums[i] * currMin);
+
+        currMin = Math.min(nums[i], nums[i] * currMax, nums[i] * currMin);
+
+        maxProd = Math.max(maxProd, currMax);
+
+    }
+
+    return maxProd;
+};
+
+
+console.log(maxProduct1([2, 3, -2, 4]));
