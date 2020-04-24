@@ -1,27 +1,16 @@
 var longestCommonPrefix = function (strs) {
-    // Check if the string is empty if so return empty string
-    if (strs == null || strs.length == 0) {
-        return "";
-    }
 
-    let longestCommonPrefix = strs[0];
+    if (strs.length == 0) return '';
+    // Assign first string in strs as the prefix and use it to compare
+    let prefix = strs[0];
+    // Iterate through the strs array
+        // Keep trimming the prefix until the prefix matches the min words length
+    for (let words of strs) {
+        while (words.indexOf(prefix) !== 0) {
+            prefix = prefix.substring(0, prefix.length - 1);
 
-    
-    for (let i = 1; i < strs.length; i++) {
-        let j = 0;
-        let currentString = strs[i];
-
-        while (j < longestCommonPrefix.length && j < currentString.length && longestCommonPrefix.charAt(j) == currentString.charAt(j)) {
-            j++;
+            if (prefix === "") { return ""; }
         }
-
-        if (j == 0) {
-            return "";
-        }
-
-        longestCommonPrefix = longestCommonPrefix.substring(0, j);
     }
-
-    return longestCommonPrefix;
-
+    return prefix;
 };
