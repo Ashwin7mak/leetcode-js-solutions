@@ -27,3 +27,46 @@ var trap = function (height) {
     return water;
 
 };
+
+// Two Pointer Approach
+var trap = function (height) {
+
+    // Initialize left pointer to 0 and right pointer to size-1
+    // While left < right, do:
+    // If height[left] is smaller than height[right]
+    // If height[left] ≥ left_max, update left_max
+    // Else add left_max − height[left] to ans
+    // Add 1 to left.
+    // Else
+    // If height[right] ≥ right_max, update right_max
+    // Else add right_max − height[right] to ans
+    // Subtract 1 from right.
+    // Return ans
+
+
+    if (height.length === 0 || height === null) return 0;
+
+    let result = 0;
+
+    let left = 0, right = height.length - 1;
+
+    let maxLeft = 0, maxRight = 0;
+
+    while (left <= right) {
+
+        maxLeft = Math.max(maxLeft, height[left]);
+
+        maxRight = Math.max(maxRight, height[right]);
+
+        if (maxLeft < maxRight) {
+            result += (maxLeft - height[left]);
+            left++;
+        } else {
+            result += (maxRight - height[right]);
+            right--;
+        }
+    }
+
+    return result;
+
+};
