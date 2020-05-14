@@ -14,25 +14,30 @@ function maxArea(height) {
     return max;
 }
 
-// Binary Search Approach
+// Two-Pointer Approach
+
 var maxArea = function (height) {
-    let max = Number.NEGATIVE_INFINITY;
-    // Assigning two pointers
-    // Left as 0, Right as height size
+    // MaxArea = Length of shortest line * distance between two lines
+    // Using two pointer approach with left = 0, right = size - 1;
+    // While left < right, calculate the maxarea between the two lines.
+    //     If(A[left] < A[height]), alter the left value(left++) and right value(right--)
+    if (height.length === 0 || height === null) return 0;
+
     let left = 0, right = height.length - 1;
 
-    while (left < right) {
-        // Assigning min as the min of the heights
-        let min = Math.min(height[left], height[right]);
-        // Calculate the area as max
-        max = Math.max(max, min * (right - left));
+    let maxArea = 0;
 
-        // Untill both left and right meets at one height
+    while (left < right) {
+
+        let minHeight = Math.min(height[left], height[right]);
+        maxArea = Math.max(maxArea, minHeight * (right - left));
+
         if (height[left] < height[right]) {
             left++;
         } else {
             right--;
         }
     }
-    return max;
+
+    return maxArea;
 };
