@@ -38,6 +38,29 @@ var wordBreak = function (s, wordDict) {
     }
 }
 
+// Dp Bottom-Up Approach
+const wordBreak1 = (s, wordDict) => {
 
+    let n = s.length;
 
-console.log(wordBreak("leetcode", ["leet", "code"]));
+    let dp = new Array(n + 1).fill(false);
+
+    // Sub problem is dp of string s of length n is dp[s.length] who value is true
+    dp[0] = true;
+
+    for(let i = 1; i < n + 1; i++) {
+        for(let j = 0; j < i; j++) {
+            let word = s.slice(j, i);
+
+            if(dp[j] === true && wordDict.includes(word)) {
+                dp[i] = true;
+                break;
+            }
+        }
+    }
+    console.log("Dp", dp);
+    return dp[n];
+}
+
+//console.log(wordBreak1("leetcode", ["leet", "code"]));
+console.log(wordBreak1("catsanddog", ["cat", "cats", "and", "sand", "dog"]));
