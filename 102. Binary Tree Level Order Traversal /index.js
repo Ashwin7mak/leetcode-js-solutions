@@ -39,5 +39,29 @@ var levelOrder = function (root) {
         }
         result.push(current);
     }
+
     return result;
 };
+
+/* Recursive approach */
+
+function levelOrder(root) {
+
+    let result = [];
+    bfs(root, 0);
+    return result;
+
+    function bfs(node, level) {
+        if(node === null) return;
+
+        if(level === result.length) {
+            result.push([]);
+        }
+
+        result[level].push(node.val);
+
+        bfs(node.left, level + 1);
+        bfs(node.right, level + 1);
+    }
+
+}
