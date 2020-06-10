@@ -28,3 +28,25 @@ var inorderTraversal = function (root) {
     traverse(root);
     return nodes;
 };
+
+/* Iterative Approach */
+
+function inorderTraversal(root) {
+    if(root === null) return [];
+
+    let result = [], stack = [];
+
+    let curr = root;
+
+    while(stack.length > 0 || curr !== null) {
+        if(curr !== null) {
+            stack.push(curr);
+            curr = curr.left;
+        } else {
+            curr = stack.pop();
+            result.push(curr.val);
+            curr = curr.right;
+        }
+    }
+    return result;
+}
