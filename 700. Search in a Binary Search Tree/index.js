@@ -26,3 +26,16 @@ var searchBST = function (root, val) {
     }
 
 };
+
+
+/* Iterative Approach */
+const searchBST = function(root, val) {
+    if(root == null) return null;
+
+    if(root.val == val) return root;
+
+    while (root == null && root.val != val) {
+        root = val > root.val ? root.right : root.left;
+    }
+    return root;
+}
