@@ -4,11 +4,9 @@
 
 // O(n)
 function TwoSum(nums, target) {
-    let result = new Map;
+    let result = new Map();
 
     for (let i = 0; i < nums.length; i++) {
-        let result = new Map;
-
         for (let i = 0; i < nums.length; i++) {
             let a = target - nums[i];
             if (result.has(a)) {
@@ -19,9 +17,8 @@ function TwoSum(nums, target) {
     }
 }
 
-
 // O(n^2)
-function TwoSum(nums, target) {
+function TwoSum1(nums, target) {
     let result = [];
 
     for(let i = 0; i < nums.length; i++) {
