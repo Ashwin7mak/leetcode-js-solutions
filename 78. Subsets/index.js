@@ -19,3 +19,21 @@ var subsets = function(nums) {
     });
     return result;
 }
+
+/* Backtracking Approach */
+var subsets = function(nums) {
+    if(!nums || nums.length == 0) return [];
+    let result = [[]];
+    backTrack(0, [], nums, result);
+    
+    return result;
+}
+
+function backTrack(start, curr, nums, result) {
+    for(let i = start; i < nums.length; i++) {
+        curr.push(nums[i]);
+        result.push([...curr]);
+        backTrack(i + 1, curr, nums, result);
+        curr.pop();
+    }
+}
