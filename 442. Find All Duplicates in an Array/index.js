@@ -1,3 +1,29 @@
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+
+/* Without extra space */
+// Basically complement every number in the array once visited
+// The nos that are positive are the duplicates
+var findDuplicates = function (nums) {
+    if (!nums || nums.length == 0) return [];
+
+    let res = [];
+
+    for (let i = 0; i < nums.length; i++) {
+
+        let index = Math.abs(nums[i]) - 1;
+
+        if (nums[index] < 0) res.push(index + 1);
+
+        nums[index] = -nums[index];
+    }
+    return res;
+}
+
+
+/* Using hash map */
 function findDuplicates(nums) {
     let hash = {};
     let result = [];
