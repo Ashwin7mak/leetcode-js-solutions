@@ -2,6 +2,22 @@
 // Because nums[0] + nums[1] = 2 + 7 = 9,
 // return [0, 1].
 
+
+
+// O(n)
+function TwoSum(nums, target) {
+    let hash = {};
+
+    for(let i = 0; i < nums.length; i++) {
+        let k = target - nums[i];
+
+        if(hash[k] !== undefined) {
+            return [hash[k], i];
+        }
+        hash[nums[i]] = i;
+    }
+}
+
 // O(n)
 function TwoSum(nums, target) {
     let result = new Map();
