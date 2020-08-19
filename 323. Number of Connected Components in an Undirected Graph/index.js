@@ -32,8 +32,8 @@ var countComponents = function (n, edges) {
     for (let i = 0; i < n; i++) {
         if (visited[i] === false) {
             let stack = [];
-            stack.push(node);
-            visited[node] = true;
+            stack.push(i);
+            visited[i] = true;
             while (stack.length > 0) {
                 let item = stack.pop();
                 if (graph[item]) {
