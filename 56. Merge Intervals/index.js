@@ -8,11 +8,13 @@ var merge = function (intervals) {
     intervals = intervals.sort((a, b) => a[0] - b[0]);
 
     let result = [];
-    // Set first element as the curr
+    // Set curr_begin and curr_end variables for comparing
     let curr_begin = intervals[0][0];
     let curr_end = intervals[0][1];
 
     // Iterate through the entire array loop
+        // If the curr_end >= next_begin, set curr_end = Math.max(curr_end, next_begin)
+        // Else push [curr_begin, curr_end] into the result, and then reassign the variables
     for (let i = 1; i < intervals.length; i++) {
 
         let interval = intervals[i];
@@ -27,9 +29,7 @@ var merge = function (intervals) {
         }
     }
 
-    return result.push([curr_begin, curr_end]);
+    result.push([curr_begin, curr_end]);
 
+    return result;
 };
-
-
-console.log(merge([[1, 3], [2, 6], [8, 10], [15, 18]]));
