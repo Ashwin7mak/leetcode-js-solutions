@@ -3,7 +3,10 @@
  * @return {number}
  */
 
-/* Two pointers approach */
+/* Two pointers approach 
+    TC - O(n)
+    SC - O(1)
+*/
  var findDuplicate = function (nums) {
     let slow = 0;
     let fast = 0;
@@ -28,3 +31,29 @@
 
     return fast;
 };
+
+/* Using negation method
+   But alters the given input
+
+    Iterate through the array
+        Negate all the elements
+        use the index which Math.abs(nums[i])
+
+        Check if that position is positive, if so negate it
+
+        If the position is negative, then it is the duplicate, return index
+   TC - O(n)
+   SC - O(1)
+*/
+var findDuplicate = function (nums) {
+    for(let i = 0; i < nums.length; i++) {
+        let index = Math.abs(nums[i]);
+
+        if(nums[index] < 0) {
+            return index;
+        } else {
+            nums[index] = -nums[index];
+        }
+    }
+    return -1;
+}
