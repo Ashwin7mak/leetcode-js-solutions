@@ -31,5 +31,4 @@ var isValid = function(s) {
 
     // Check if the stack is empty or not
     return stack.length == 0;
-
 };
