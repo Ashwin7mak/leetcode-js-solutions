@@ -24,7 +24,7 @@ var addStrings = function (num1, num2) {
 
     while(i >= 0 || j >= 0) {
 
-        let input1 = i >= 0 ? num1.charAt(i) - '0' : 0;
+        let input1 = i >= 0 ? num1.charAt(i) - '0' : 0; // Convert string to number - "123".charAt(1) - '0' = 2
         let input2 = j >= 0 ? num2.charAt(j) - '0' : 0;
 
         let sum = (input1 + input2 + carry) % 10;
