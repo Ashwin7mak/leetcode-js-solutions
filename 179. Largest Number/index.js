@@ -13,8 +13,6 @@ var largestNumber = function (nums) {
 
     if (!nums || nums.length === 0) return nums.toString();
 
-    let result = '';
-
     let largestNumber = nums.map(String).sort((a, b) => {
         if (a.concat(b) > b.concat(a)) {
             return -1;
