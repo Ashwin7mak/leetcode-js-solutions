@@ -1,3 +1,50 @@
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+/*
+    Two Pointers Approach
+
+    - Sort two arrays and iterate using two pointers
+    TC - O(n logn)
+    SC - O(n)
+
+*/
+var intersection = function (nums1, nums2) {
+
+    nums1 = nums1.sort((a, b) => a - b);
+    nums2 = nums2.sort((a, b) => a - b);
+
+    let i = 0, j = 0;
+
+    let result = new Set();
+
+    while (i < nums1.length && j < nums2.length) {
+
+        let a = nums1[i] || 0;
+        let b = nums2[j] || 0;
+
+        if (a === b) {
+            result.add(a);
+            i++;
+            j++;
+        } else if (a > b) {
+            j++;
+        } else if (a < b) {
+            i++;
+        }
+
+    }
+    return Array.from(result);
+};
+
+/* 
+    Set Approach
+    
+    TC - O(n)
+    SC - O(n)
+*/
 function intersection(nums1, nums2) {
     let res = [];
     // Checking the numbers that are common in both arrays 
@@ -38,5 +85,4 @@ var intersection = function (nums1, nums2) {
     }
 
     return res;
-
 };
