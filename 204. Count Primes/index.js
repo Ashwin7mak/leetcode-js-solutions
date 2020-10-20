@@ -1,5 +1,12 @@
+/*
+    Sieve of Eratoshtenes Algorithm
+
+    TC - O(n log log n)
+    SC - O(n)
+*/
+
 var countPrimes = function(n) {
-    // Sieve of Eratoshtenes Algorithm
+    
     // Two arrays one for carrying initial numbers and another for resulting prime numbers
     let prime = [];
     let res = [];
@@ -21,7 +28,6 @@ var countPrimes = function(n) {
             res.push(i);
         }
     }
-    console.log("RESULT :", res);
     return res.length;
 }
 
