@@ -2,6 +2,19 @@
  * @param {number[]} nums
  * @return {number}
  */
+/*
+    Single Pass Approach
+
+    - Assign three variables, maxProd, prevMin, prevMax = nums[0]
+    - Iterate from 1 to N
+        - Calculate currMax and currMin at every nums[i] i.e. (nums[i], prevMin * nums[i], prevMax * nums[i])
+        - Reassign prevMin and prevMax
+        - Update maxProd if it is lesser than prevMax
+    - Return maxProd
+
+    TC - O(n)
+    SC - O(1)
+*/
 var maxProduct = function (nums) {
     // Remember negative * negative is positive
     if (nums.length == 0) return nums;
@@ -28,27 +41,33 @@ var maxProduct = function (nums) {
     return maxProd;
 };
 
+/* 
+    Brute Force Approach
 
-var maxProduct1 = function (nums) {
-
-    if (nums.length == 0 || nums == 0) return 0;
-
-    let currMin = nums[0], currMax = nums[0];
-
+    TC - O(n ^ 2)
+    SC - O(1)
+*/
+var maxProduct = function(nums) {
+    
+    if(!nums || nums.length === 0) return 0;
+    
+    if(nums.length === 1) return nums;
+    
     let maxProd = nums[0];
-
-    for (let i = 1; i < nums.length; i++) {
-
-        currMax = Math.max(nums[i], nums[i] * currMax, nums[i] * currMin);
-
-        currMin = Math.min(nums[i], nums[i] * currMax, nums[i] * currMin);
-
-        maxProd = Math.max(maxProd, currMax);
-
+    
+    for(let i = 0; i < nums.length; i++) {
+        
+        let currProd = 1;
+        
+        for(let j = i; j < nums.length; j++) {
+            
+            currProd *= nums[j];
+            
+            if(currProd > maxProd) {
+                maxProd = currProd
+            }
+        }  
+        
     }
-
     return maxProd;
 };
-
-
-console.log(maxProduct1([2, 3, -2, 4]));
