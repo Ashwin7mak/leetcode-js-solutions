@@ -3,32 +3,39 @@
  * @param {string} t
  * @return {boolean}
  */
-var isIsomorphic = function (s, t) {
-    if (s.length !== t.length) return false;
-    // Using object to store the string characters
-    // Key - string t characters
-    // Value - string s characters
-    let hash = {};
-    // Check if the key is present in hash
-    // If so, check if the key has the value assigned corresponding to string s
-    // If not return false
-    // If the key is not present in the hash
-    // Check if the hash has any value associated with the string s
-    // If so, return false
-    // If not, assign hash[key] to the string s
-    for (let i = 0; i < t.length; i++) {
-        let key = t[i];
+/*
+    Hashmap Approach (Similar to Word Pattern)
+    - Check if the two strings are of same length
+    - Use a hash map to store the characters, i.e. s = "aba", t = "bab"
+        hash = { s[i]: t[i] }
+    - Iterate through the s
+        - Check if hash contains s[i],
+            - If not, check if hash has t[i] as its values, if so return false
+            - Save hash[s[i]] = t[i]
+        - If so, check if hash[s[i]] = t[i], if not return false
+    - return true
 
-        if (hash[key]) {
-            if (hash[key] !== s[i]) {
+    TC - O(n)
+    SC - O(n)
+*/
+var isIsomorphic = function(s, t) {
+    
+     if(!s && !t)
+         return true;
+    
+    if(s.length !== t.length)
+        return false;
+    
+    let hash = {};
+    
+    for(let i = 0; i < s.length; i++) {
+        if(hash[s[i]] === undefined) {
+            if(Object.values(hash).indexOf(t[i]) !== -1)
                 return false;
-            }
+            hash[s[i]] = t[i];
         } else {
-            if (Object.values(hash).indexOf(s[i]) !== -1) {
+            if(hash[s[i]] !== t[i])
                 return false;
-            } else {
-                hash[key] = s[i];
-            }
         }
     }
     return true;
