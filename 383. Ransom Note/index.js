@@ -19,7 +19,6 @@ var canConstruct = function (ransomNote, magazine) {
         }
     }
 
-    console.log("----", obj);
     // Iterate through ransomNote
     // Check if the elements are not already present in obj
     // If so return false;
